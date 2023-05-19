@@ -23,5 +23,10 @@ int main() {
     char other_name[] = " Archimedes";
     strncat(mutable_name, other_name, 5);
     printf("Result of concatenation: %s\n", mutable_name);
+
+    // sprintf
+    char full_name[30];
+    sprintf(full_name, "%s %s", name, other_name);
+    printf("My full name is: %s\n", full_name);
     return 0;
 }
