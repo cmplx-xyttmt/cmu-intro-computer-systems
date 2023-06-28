@@ -69,7 +69,10 @@ bool queue_insert_head(queue_t *q, const char *s) {
     /* Don't forget to allocate space for the string and copy it */ 
 	char * new_s = malloc(strlen(s) + 1);
 	/* What if either call to malloc returns NULL? */
-	if(new_s == NULL) return false;
+	if(new_s == NULL) {
+		free(newh);
+		return false;
+	}
 	strcpy(new_s, s);
 	newh->next = q->head;
 	newh->value = new_s;
@@ -99,7 +102,10 @@ bool queue_insert_tail(queue_t *q, const char *s) {
 	if(newh == NULL) return false;
 	
 	char * new_s = malloc(strlen(s) + 1);
-	if(new_s == NULL) return false;
+	if(new_s == NULL) {
+		free(newh);
+		return false;
+	}
 	strcpy(new_s, s);
 
 	newh->value = new_s;
