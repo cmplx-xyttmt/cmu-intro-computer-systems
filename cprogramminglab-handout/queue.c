@@ -67,11 +67,11 @@ bool queue_insert_head(queue_t *q, const char *s) {
     newh = malloc(sizeof(list_ele_t));
 	if(newh == NULL) return false;
     /* Don't forget to allocate space for the string and copy it */ 
-	char * new_s = malloc(sizeof(s));
+	char * new_s = malloc(strlen(s) + 1);
+	/* What if either call to malloc returns NULL? */
 	if(new_s == NULL) return false;
-	sprintf(new_s, "%s", s);
-    /* What if either call to malloc returns NULL? */
-    newh->next = q->head;
+	strcpy(new_s, s);
+	newh->next = q->head;
 	newh->value = new_s;
 	if(q->head == NULL) q->tail = newh;
     q->head = newh;
@@ -98,9 +98,9 @@ bool queue_insert_tail(queue_t *q, const char *s) {
 	newh = malloc(sizeof(list_ele_t));
 	if(newh == NULL) return false;
 	
-	char * new_s = malloc(sizeof(s));
+	char * new_s = malloc(strlen(s) + 1);
 	if(new_s == NULL) return false;
-	sprintf(new_s, "%s", s);
+	strcpy(new_s, s);
 
 	newh->value = new_s;
 	newh->next = NULL;
