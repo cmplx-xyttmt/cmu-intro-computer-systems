@@ -9,8 +9,8 @@
  * Developed for courses 15-213/18-213/15-513 by R. E. Bryant, 2017
  * Extended to store strings, 2018
  *
- * TODO: fill in your name and Andrew ID
- * @author XXX <XXX@andrew.cmu.edu>
+ * 
+ * @author Isaac Owomugisha github.com/cmplx-xyttmt
  */
 
 #include "queue.h"
@@ -97,6 +97,7 @@ bool queue_insert_head(queue_t *q, const char *s) {
 bool queue_insert_tail(queue_t *q, const char *s) {
     /* You need to write the complete code for this function */
     /* Remember: It should operate in O(1) time */
+	if(q == NULL) return false;
 	list_ele_t *newh;
 	newh = malloc(sizeof(list_ele_t));
 	if(newh == NULL) return false;
